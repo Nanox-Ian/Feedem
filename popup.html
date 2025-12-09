@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        :root {
+            --dark-bg: #18191a;
+            --dark-card: #242526;
+            --dark-text: #e4e6eb;
+            --dark-text-secondary: #b0b3b8;
+            --dark-primary: #2d88ff;
+            --dark-border: #3e4042;
+            --dark-success: #31a24c;
+            --dark-warning: #f7b928;
+            --dark-danger: #f02849;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 380px;
+            padding: 20px;
+            font-family: -apple-system, system-ui, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            font-size: 14px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--dark-border);
+        }
+        
+        h1 {
+            font-size: 20px;
+            margin: 0 0 8px 0;
+            color: var(--dark-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        h1 .icon {
+            font-size: 24px;
+        }
+        
+        .description {
+            color: var(--dark-text-secondary);
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        .version {
+            font-size: 11px;
+            color: var(--dark-text-secondary);
+            margin-top: 5px;
+        }
+        
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        
+        .control-group {
+            background: var(--dark-card);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid var(--dark-border);
+        }
+        
+        .control-group h3 {
+            margin: 0 0 15px 0;
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .control-group h3 .icon {
+            font-size: 16px;
+        }
+        
+        .toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(62, 64, 66, 0.3);
+        }
+        
+        .toggle:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .toggle-info {
+            flex: 1;
+        }
+        
+        .toggle-label {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .toggle-label .icon {
+            font-size: 14px;
+        }
+        
+        .toggle-description {
+            font-size: 12px;
+            color: var(--dark-text-secondary);
+            line-height: 1.4;
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #4d4d4d;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--dark-primary);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+        
+        .theme-preview {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--dark-border);
+        }
+        
+        .theme-option {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 13px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+            background: var(--dark-card);
+        }
+        
+        .theme-option:hover {
+            background: var(--dark-border);
+        }
+        
+        .theme-dark {
+            border-left: 4px solid var(--dark-primary);
+        }
+        
+        .theme-light {
+            border-left: 4px solid #f0f2f5;
+        }
+        
+        .theme-active {
+            border-color: var(--dark-primary);
+            background: var(--dark-border);
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: var(--dark-primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #4599ff;
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: var(--dark-card);
+            color: var(--dark-text);
+            border: 1px solid var(--dark-border);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--dark-border);
+        }
+        
+        .btn-danger {
+            background: var(--dark-danger);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #f13959;
+        }
+        
+        .status {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            background: var(--dark-card);
+            text-align: center;
+            font-size: 13px;
+            color: var(--dark-text-secondary);
+            border: 1px solid var(--dark-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .status-success {
+            color: var(--dark-success);
+            border-color: rgba(49, 162, 76, 0.3);
+        }
+        
+        .status-warning {
+            color: var(--dark-warning);
+            border-color: rgba(247, 185, 40, 0.3);
+        }
+        
+        .status-error {
+            color: var(--dark-danger);
+            border-color: rgba(240, 40, 73, 0.3);
+        }
+        
+        .warning-note {
+            background: rgba(247, 185, 40, 0.1);
+            border: 1px solid rgba(247, 185, 40, 0.3);
+            color: var(--dark-warning);
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-top: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        
+        .warning-note .icon {
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 11px;
+            color: var(--dark-text-secondary);
+            padding-top: 15px;
+            border-top: 1px solid var(--dark-border);
+        }
+        
+        .powered-by {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        
+        .powered-by span {
+            color: var(--dark-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><span class="icon">🌙</span> Facebook Dark Cleaner</h1>
+        <div class="description">
+            Forces dark mode, keeps only feed & messenger, removes all distractions
+        </div>
+        <div class="version">Version 2.0.0 • Nuclear Mode Enabled</div>
+    </div>
+    
+    <div class="controls">
+        <div class="control-group">
+            <h3><span class="icon">⚡</span> Core Features</h3>
+            
+            <div class="toggle">
+                <div class="toggle-info">
+                    <div class="toggle-label"><span class="icon">✅</span> Enable Extension</div>
+                    <div class="toggle-description">Toggle all features on/off</div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="toggleEnabled" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="toggle">
+                <div class="toggle-info">
+                    <div class="toggle-label"><span class="icon">🌙</span> Force Dark Mode</div>
+                    <div class="toggle-description">Always dark theme, overrides Facebook settings</div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="toggleDarkMode" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="theme-preview">
+                <div class="theme-option theme-dark theme-active" id="themeDark">
+                    🌙 Dark Mode
+                </div>
+                <div class="theme-option theme-light" id="themeLight">
+                    ☀️ Light Mode
+                </div>
+            </div>
+        </div>
+        
+        <div class="control-group">
+            <h3><span class="icon">☢️</span> Nuclear Options</h3>
+            
+            <div class="toggle">
+                <div class="toggle-info">
+                    <div class="toggle-label"><span class="icon">☢️</span> Nuclear Dark Mode</div>
+                    <div class="toggle-description">Force ALL elements to dark theme (experimental)</div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="toggleNuclearDark">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="warning-note">
+                <span class="icon">⚠️</span>
+                <div>Nuclear mode forces every div to dark colors. May affect performance and break some elements.</div>
+            </div>
+            
+            <div class="toggle">
+                <div class="toggle-info">
+                    <div class="toggle-label"><span class="icon">🧨</span> Aggressive Cleanup</div>
+                    <div class="toggle-description">Remove trending, suggestions, birthdays, etc.</div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="toggleAggressive">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="control-group">
+            <h3><span class="icon">🧹</span> Cleanup Options</h3>
+            
+            <div class="toggle">
+                <div class="toggle-info">
+                    <div class="toggle-label"><span class="icon">🚫</span> Hide Sponsored Posts</div>
+                    <div class="toggle-description">Remove ads from your feed</div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="toggleSponsored" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="toggle">
+                <div class="toggle-info">
+                    <div class="toggle-label"><span class="icon">📸</span> Hide Stories</div>
+                    <div class="toggle-description">Remove Stories from top of feed</div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="toggleStories" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="toggle">
+                <div class="toggle-info">
+                    <div class="toggle-label"><span class="icon">🎥</span> Hide Watch/Reels</div>
+                    <div class="toggle-description">Remove video content tabs</div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="toggleVideos" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="toggle">
+                <div class="toggle-info">
+                    <div class="toggle-label"><span class="icon">📈</span> Hide Trending</div>
+                    <div class="toggle-description">Remove trending topics sidebar</div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="toggleTrending" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <button class="btn btn-primary" id="applyBtn">
+                <span class="icon">⚡</span>
+                Apply to Facebook
+            </button>
+            <button class="btn btn-secondary" id="refreshBtn">
+                <span class="icon">🔄</span>
+                Refresh Page
+            </button>
+        </div>
+        
+        <div class="buttons">
+            <button class="btn btn-secondary" id="savePresetBtn">
+                <span class="icon">💾</span>
+                Save Preset
+            </button>
+            <button class="btn btn-danger" id="resetBtn">
+                <span class="icon">🔄</span>
+                Reset All
+            </button>
+        </div>
+        
+        <div class="status status-success" id="status">
+            <span class="icon">✅</span>
+            Active on Facebook.com
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div>Facebook Dark Cleaner v2.0.0</div>
+        <div class="powered-by">
+            <span>☢️ Nuclear Mode Ready</span>
+        </div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>

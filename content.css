@@ -1,0 +1,347 @@
+/* Facebook Dark Cleaner Extension - Complete Dark Mode */
+/* Version 2.0.0 - Nuclear Dark Mode Enabled */
+
+/* ===== DARK MODE VARIABLES ===== */
+:root {
+  --dark-bg: #18191a !important;
+  --dark-card: #242526 !important;
+  --dark-card-hover: #2d2d2d !important;
+  --dark-text: #e4e6eb !important;
+  --dark-text-secondary: #b0b3b8 !important;
+  --dark-border: #3e4042 !important;
+  --dark-primary: #2d88ff !important;
+  --dark-scrollbar: #3a3b3c !important;
+  --dark-scrollbar-thumb: #5a5a5a !important;
+  --dark-input: #3a3b3c !important;
+}
+
+/* ===== BASE DARK MODE ===== */
+body {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
+}
+
+/* ===== HIDE UNNECESSARY ELEMENTS ===== */
+[role="navigation"],
+[data-pagelet="LeftRail"],
+div[data-testid="left_nav_section"],
+aside[role="complementary"][data-testid*="left"],
+div[data-pagelet="RightRail"],
+[role="complementary"]:not([aria-label*="Chat"]),
+div[data-testid="right_column"],
+[aria-label="Stories"],
+div[data-pagelet="Stories"],
+a[href*="/watch/"],
+a[href*="/marketplace/"],
+a[href*="/gaming/"],
+a[href*="/reels/"],
+[aria-label="Create a post"],
+div[data-pagelet="Composer"],
+form[method="POST"][action*="dialog/feed"] {
+  display: none !important;
+}
+
+/* ===== TOP NAVIGATION - DARK ===== */
+[role="banner"],
+header {
+  background-color: var(--dark-card) !important;
+  border-bottom: 1px solid var(--dark-border) !important;
+  height: 56px !important;
+  min-height: 56px !important;
+  max-height: 56px !important;
+}
+
+[role="search"],
+[aria-label="Search Facebook"] {
+  background-color: var(--dark-input) !important;
+}
+
+input[type="search"],
+input[aria-label="Search Facebook"] {
+  background-color: var(--dark-input) !important;
+  color: var(--dark-text) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+/* ===== FEED AREA - DARK ===== */
+[role="main"],
+div[data-pagelet="Feed"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background-color: transparent !important;
+}
+
+[role="main"] {
+  width: 65% !important;
+  margin-left: 5% !important;
+  margin-top: 20px !important;
+  max-width: 680px !important;
+}
+
+[role="article"],
+div[data-pagelet*="FeedUnit"],
+div[data-ad-preview="message"] {
+  background-color: var(--dark-card) !important;
+  border: 1px solid var(--dark-border) !important;
+  border-radius: 8px !important;
+  margin-bottom: 16px !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ===== MESSENGER - DARK ===== */
+[aria-label="Chats"],
+div[data-testid="chat_sidebar"],
+div[aria-label*="Messenger"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: fixed !important;
+  right: 0 !important;
+  top: 56px !important;
+  width: 350px !important;
+  height: calc(100vh - 56px) !important;
+  z-index: 10000 !important;
+  background-color: var(--dark-card) !important;
+  border-left: 1px solid var(--dark-border) !important;
+}
+
+/* ===== SCROLLBARS DARK ===== */
+::-webkit-scrollbar {
+  width: 10px !important;
+  background-color: var(--dark-bg) !important;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--dark-bg) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--dark-scrollbar-thumb) !important;
+  border-radius: 5px !important;
+}
+
+/* ===== TEXT & LINKS DARK ===== */
+[dir="auto"]:not([class*="hidden_elem"]),
+span[dir="auto"]:not([class*="hidden_elem"]) {
+  color: var(--dark-text) !important;
+}
+
+a {
+  color: var(--dark-primary) !important;
+}
+
+a:hover {
+  color: #4599ff !important;
+}
+
+/* ===== INPUTS & BUTTONS DARK ===== */
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+  background-color: var(--dark-input) !important;
+  color: var(--dark-text) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+button:not([disabled]),
+[role="button"]:not([disabled]) {
+  background-color: var(--dark-primary) !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* ===== PLACEHOLDER DARK ===== */
+::placeholder {
+  color: var(--dark-text-secondary) !important;
+  opacity: 0.7 !important;
+}
+
+/* ===== MEDIA DARK ===== */
+img:not([src*="emoji"]):not([src*="sticker"]) {
+  filter: brightness(0.9) contrast(1.1) !important;
+}
+
+video {
+  filter: brightness(0.9) !important;
+}
+
+img[src*="emoji"],
+img[src*="sticker"],
+.emoji {
+  filter: none !important;
+}
+
+/* ===== NUCLEAR DARK MODE - FORCES ALL DIVS DARK ===== */
+.fb-nuclear-dark div,
+.fb-nuclear-dark span,
+.fb-nuclear-dark section,
+.fb-nuclear-dark article,
+.fb-nuclear-dark aside,
+.fb-nuclear-dark nav,
+.fb-nuclear-dark header,
+.fb-nuclear-dark footer,
+.fb-nuclear-dark main {
+  background-color: var(--dark-card) !important;
+  color: var(--dark-text) !important;
+  border-color: var(--dark-border) !important;
+}
+
+.fb-nuclear-dark * {
+  background-color: var(--dark-card) !important;
+  background: var(--dark-card) !important;
+  background-image: none !important;
+  border-color: var(--dark-border) !important;
+  outline-color: var(--dark-border) !important;
+}
+
+.fb-nuclear-dark *:not(svg):not(path):not(g):not(circle):not(rect):not(line) {
+  color: var(--dark-text) !important;
+  fill: var(--dark-text) !important;
+  stroke: var(--dark-text) !important;
+}
+
+.fb-nuclear-dark * {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: none !important;
+}
+
+.fb-nuclear-dark input,
+.fb-nuclear-dark textarea,
+.fb-nuclear-dark select,
+.fb-nuclear-dark button {
+  background-color: var(--dark-input) !important;
+  color: var(--dark-text) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+.fb-nuclear-dark a {
+  color: var(--dark-primary) !important;
+}
+
+.fb-nuclear-dark *:hover {
+  background-color: var(--dark-card-hover) !important;
+}
+
+.fb-nuclear-dark a:visited {
+  color: #8b9dc3 !important;
+}
+
+.fb-nuclear-dark *:focus,
+.fb-nuclear-dark *:active {
+  outline: 2px solid var(--dark-primary) !important;
+  outline-offset: 2px !important;
+}
+
+.fb-nuclear-dark ::placeholder {
+  color: var(--dark-text-secondary) !important;
+  opacity: 0.7 !important;
+}
+
+.fb-nuclear-dark ::selection {
+  background-color: var(--dark-primary) !important;
+  color: white !important;
+}
+
+.fb-nuclear-dark img:not([src*="emoji"]):not([src*="sticker"]):not([src*="logo"]) {
+  filter: brightness(0.85) contrast(1.1) !important;
+  opacity: 0.9 !important;
+}
+
+.fb-nuclear-dark img[src*="logo"],
+.fb-nuclear-dark svg[aria-label*="Facebook"] {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+.fb-nuclear-dark img[src*="emoji"],
+.fb-nuclear-dark img[src*="sticker"] {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+.fb-nuclear-dark video {
+  filter: brightness(0.9) !important;
+}
+
+.fb-nuclear-dark iframe {
+  background: var(--dark-card) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+.fb-nuclear-dark canvas {
+  background: var(--dark-card) !important;
+}
+
+.fb-nuclear-dark ::-webkit-scrollbar {
+  width: 10px !important;
+  background: var(--dark-bg) !important;
+}
+
+.fb-nuclear-dark ::-webkit-scrollbar-thumb {
+  background: var(--dark-scrollbar-thumb) !important;
+}
+
+/* ===== AGGRESSIVE CLEANUP STYLES ===== */
+.fb-aggressive-cleanup [aria-label*="Trending"],
+.fb-aggressive-cleanup [aria-label*="Suggested"],
+.fb-aggressive-cleanup [aria-label*="Popular"],
+.fb-aggressive-cleanup [aria-label*="Recommended"],
+.fb-aggressive-cleanup [aria-label*="Birthday"],
+.fb-aggressive-cleanup [aria-label*="Memory"],
+.fb-aggressive-cleanup [aria-label*="Friendversary"],
+.fb-aggressive-cleanup [aria-label*="Marketplace"],
+.fb-aggressive-cleanup [aria-label*="Buy"],
+.fb-aggressive-cleanup [aria-label*="Sell"],
+.fb-aggressive-cleanup [aria-label*="Game"],
+.fb-aggressive-cleanup [aria-label*="Gaming"],
+.fb-aggressive-cleanup [aria-label*="Watch"],
+.fb-aggressive-cleanup [aria-label*="Video"],
+.fb-aggressive-cleanup [aria-label*="People you may know"],
+.fb-aggressive-cleanup [aria-label*="Friend suggestions"],
+.fb-aggressive-cleanup [aria-label*="Event"],
+.fb-aggressive-cleanup [aria-label*="Events"],
+.fb-aggressive-cleanup [aria-label*="Group"],
+.fb-aggressive-cleanup [aria-label*="Groups"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1200px) {
+  [role="main"] {
+    width: 70% !important;
+    margin-left: 2% !important;
+  }
+  
+  [aria-label="Chats"] {
+    width: 300px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  [role="main"] {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 10px !important;
+  }
+  
+  [aria-label="Chats"] {
+    width: 280px !important;
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.fb-dark-forced {
+  background-color: var(--dark-bg) !important;
+}
+
+.fb-clean-mode-active {
+  filter: none !important;
+}
