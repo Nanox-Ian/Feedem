@@ -1,4 +1,4 @@
-# Dark Cleaner Extension
+# Facebook Dark Cleaner Extension
 
 A Chrome extension that forces dark mode on Facebook while keeping only the essential features (Feed & Messenger) and removing all distractions.
 
@@ -81,5 +81,4 @@ Facebook frequently changes their HTML structure. If the extension stops working
 For issues or feature requests, please create an issue on GitHub.
 
 ## License
-
 MIT License - Free to use and modify
